@@ -25,14 +25,14 @@ $xaml = @"
         <DropShadowEffect Color='Black' BlurRadius='20' ShadowDepth='0' Opacity='0.5'/>
     </Window.Effect>
     <Grid>
-        <TextBlock Text='Just a moment while device is being configured...'
+        <TextBlock Text='It's your first time logging-in. Just a moment while device is being configured...'
                    Foreground='White'
                    FontSize='48'
                    FontFamily='Segoe UI'
                    HorizontalAlignment='Center'
                    VerticalAlignment='Center'
                    Margin='0,0,0,150'/>
-        <TextBlock Text='This process may take 1-2 hours and will reboot upon completion.'
+        <TextBlock Text='This process may take 1.5 hours and will reboot upon completion.'
                    Foreground='White'
                    Opacity='0.7'
                    FontSize='24'
@@ -80,7 +80,7 @@ $filePath = Join-Path -Path $directory -ChildPath $file
 New-Item -Path $filePath -ItemType File -Force
     
     # Wait for 1 hour and 30 minutes (5400 seconds)
-    Start-Sleep -Seconds 5400
+    Start-Sleep -Seconds 4000
     
     # Restart the computer
     Restart-Computer -Force
