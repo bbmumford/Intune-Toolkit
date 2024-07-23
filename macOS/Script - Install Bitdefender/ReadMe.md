@@ -1,3 +1,5 @@
-You will require a download link for your pakcage in bitdefender gravity zone.
+## You will require a download link for your pakcage in bitdefender gravity zone.
+
 ![Alt text](GravityZone_Download_Link.png)
-This will need to be instered on lines 52 & 55
+
+### This will need to be insterted on lines 52 & 55
