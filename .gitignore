@@ -1,5 +1,7 @@
 # Ignore directories starting with _
 _*/
+Linux/
+Android/
 
 # Allow all other files and directories with underscores
 !_*/*

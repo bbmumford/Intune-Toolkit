@@ -2,5 +2,5 @@
 ![badge](https://forthebadge.com/images/badges/for-you.svg)
 
 # Ultimate Guide to the Intune Galaxy.
-### .
+### A self contained library of deployment solutions & guides for Intune administartion.
 #
