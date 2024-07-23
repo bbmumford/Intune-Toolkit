@@ -23,9 +23,9 @@ To get started, check out the following documentation
 
 To make things a little easier to navigate the repo has been split up into three main sections:
 
-For instructions on configuring and linking Apple Business Manager to Intune, see [this guide](ABM_to_Intune_Configuration.md).
+For instructions on configuring & linking Apple Business Manager to Intune, see [this guide](ABM_to_Intune_Configuration.md).
 
-For instructions on deploy & manage apps from ABM VPP with Intune, see [this guide](VPP_with_Intune_Configuration.md).
+For instructions on hwo to deploy & manage apps from ABM VPP with Intune, see [this guide](VPP_with_Intune_Configuration.md).
 
 
 ## Apps
