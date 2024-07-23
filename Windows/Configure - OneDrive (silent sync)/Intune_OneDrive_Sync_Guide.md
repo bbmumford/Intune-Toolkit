@@ -70,10 +70,10 @@ To reduce the 8-hour delay for end-users to see their administratively assigned 
    - Enter an appropriate name and description for the script package.
 
 3. **Upload the Detection Script**
-   - File in repo [Here] (DisableSycnDelay_Detection.ps1)
+   - File in repo [Here](/Windows/Configure%20-%20OneDrive%20(silent%20sync)/DisableSyncDelay_Detection.ps1)
 
 4. **Upload the Remediation Script**
-   - File in repo [Here] (DisableSycnDelay_Remediation.ps1)
+   - File in repo [Here](/Windows/Configure%20-%20OneDrive%20(silent%20sync)/DisableSyncDelay_Remediation.ps1)
 
 
 5. **Configure Script Settings**
