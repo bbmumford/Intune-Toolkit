@@ -1,0 +1,34 @@
+<!-- Version: 7.222.5412.176 -->
+<JobControl>
+    <Feature name="HPMode">
+        <Default>SET JOBATTR="TRUE"</Default>
+    </Feature>
+    <Feature name="Copies_mps">
+        <Default>SET QTY=</Default>
+    </Feature>
+    <Feature name="RenderMode">
+        <Option name="Auto">SET PLANESINUSE=3</Option>
+        <Option name="FullColor">SET PLANESINUSE=3</Option>
+        <Option name="Black-White">SET PLANESINUSE=1</Option>
+    </Feature>
+    <Feature name="RenderMode">
+        <Option name="Auto">COMMENT DSSC PRINT RENDERMODE=AUTO</Option>
+        <Option name="FullColor">COMMENT DSSC PRINT RENDERMODE=COLOR</Option>
+        <Option name="Black-White">COMMENT DSSC PRINT RENDERMODE=GRAYSCALE</Option>
+        <Option name="TwinColorRed">COMMENT DSSC PRINT RENDERMODE=2KR</Option>
+        <Option name="TwinColorGreen">COMMENT DSSC PRINT RENDERMODE=2KG</Option>
+        <Option name="TwinColorBlue">COMMENT DSSC PRINT RENDERMODE=2KB</Option>
+        <Option name="TwinColorCyan">COMMENT DSSC PRINT RENDERMODE=2KC</Option>
+        <Option name="TwinColorMagenta">COMMENT DSSC PRINT RENDERMODE=2KM</Option>
+        <Option name="TwinColorYellow">COMMENT DSSC PRINT RENDERMODE=2KY</Option>
+        <Option name="TwinColorWhite">COMMENT DSSC PRINT RENDERMODE=2KW</Option>
+    </Feature>
+    <Feature name="RenderMode_mps">
+        <Option name="FullColor">SET RENDERMODE=COLOR</Option>
+        <Option name="Black-White">SET RENDERMODE=GRAYSCALE</Option>
+    </Feature>
+    <Feature name="LcolorModel_mps">
+        <Option name="FullColor">SET LCOLORMODEL=CMYK</Option>
+        <Option name="Black-White">SET LCOLORMODEL=BLACK</Option>
+    </Feature>
+</JobControl>

@@ -1,0 +1,5 @@
+# Ignore directories starting with _
+_*/
+
+# Allow all other files and directories with underscores
+!_*/*

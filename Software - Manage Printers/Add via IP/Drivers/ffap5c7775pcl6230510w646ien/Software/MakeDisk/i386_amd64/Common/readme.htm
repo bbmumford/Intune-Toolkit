@@ -1,0 +1,194 @@
+<!doctype html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en">
+<head>
+<title>Setup Utility Tool</title>
+<meta charset="UTF-8">
+<style type="text/css">
+table {
+  border-collapse: collapse;
+}
+td {
+  border: solid 1px black;
+}
+</style>
+<script type="text/javascript">
+function contains(a, obj) {
+  "use strict";
+  var i;
+  for (i = 0; i < a.length; i += 1) {
+    if (a[i] === obj) {
+      return true;
+    }
+  }
+  return false;
+}
+function getSearchString() {
+  "use strict";
+  return (document.location.search.length > 1) ? document.location.search.substring(1) : null;
+}
+function getBrowserLanguage() {
+  "use strict";
+  return navigator.browserLanguage || navigator.userLanguage || navigator.language;
+}
+function selectLanguage(lang) {
+  "use strict";
+
+  // Country and region code is not always in uppercase. Sometimes lowercase. Therefore, convert it.
+  // http://msdn.microsoft.com/en-us/library/windows/apps/jj657969.aspx
+  lang = lang.toLowerCase();
+
+  if (lang.indexOf('zh') === 0) {
+    if (lang.indexOf('zh-hant') === 0) {
+      return 'zh-Hant';
+    }
+    if (lang.indexOf('zh-hans') === 0) {
+      return 'zh-Hans';
+    }
+    switch (lang) {
+    case 'zh-hk':
+    case 'zh-tw':
+    case 'zh-mo':
+    case 'zh-cht':
+    case 'zh-hant':
+      return 'zh-Hant';
+    case 'zh-cn':
+    case 'zh-sg':
+    case 'zh-my':
+    case 'zh-chs':
+    case 'zh-hans':
+    case 'zh':
+      return 'zh-Hans';
+    }
+    return 'zh-Hans';
+  }
+  return lang.substring(0, 2);
+}
+function getSupportLanguages() {
+  "use strict";
+  var langs = [];
+  var ul = document.getElementById('supportLanguages');
+  if (!ul) {
+    return null;
+  }
+  var li = ul.getElementsByTagName('li');
+  var i;
+  for (i = 0; i < li.length; i += 1) {
+    langs[i] = li.item(i).getAttribute('lang');
+  }
+
+  return langs;
+}
+function redirect() {
+  "use strict";
+  var supportLanguages = getSupportLanguages();
+  var lang = selectLanguage(getBrowserLanguage());
+  if (!contains(supportLanguages, lang)) {
+    lang = 'en';
+  }
+  document.location = "./" + "readme" + "/readme_" + lang + ".htm";
+}
+function debug() {
+  "use strict";
+  try {
+    var h2 = document.createElement('h2');
+    document.body.appendChild(h2);
+    h2.appendChild(document.createTextNode('Debug'));
+  } catch (ignore) {}
+
+  var debug_string = function (s) {
+    var p = document.createElement('p');
+    document.body.appendChild(p);
+    p.appendChild(document.createTextNode(s));
+  };
+
+  (function () {
+    var lang_properties = [
+      'navigator.browserLanguage',
+      'navigator.language',
+      'navigator.userLanguage'
+    ],
+        i;
+    for (i = 0; i < lang_properties.length; i += 1) {
+      try {
+        debug_string(lang_properties[i] + ': "' + eval(lang_properties[i]) + '"');
+      } catch (ignore) {}
+    }
+  }());
+
+  (function () {
+    try {
+      debug_string('getBrowserLanguage(): "' + getBrowserLanguage() + '"');
+      debug_string('getSupportLanguages(): "' + getSupportLanguages() + '"');
+    } catch (ignore) {}
+  }());
+
+  (function () {
+    var expr = ["selectLanguage('zh-CN')==='zh-Hans'",
+                "selectLanguage('zh-cn')==='zh-Hans'",
+                "selectLanguage('zh-SG')==='zh-Hans'",
+                "selectLanguage('zh-sg')==='zh-Hans'",
+                "selectLanguage('zh-CHS')==='zh-Hans'",
+                "selectLanguage('zh-chs')==='zh-Hans'",
+                "selectLanguage('zh-Hans')==='zh-Hans'",
+                "selectLanguage('zh-hans')==='zh-Hans'",
+                "selectLanguage('zh-hans-cn')==='zh-Hans'",
+                "selectLanguage('zh-hans-sg')==='zh-Hans'",
+                "selectLanguage('zh')==='zh-Hans'",
+                "selectLanguage('zh-HK')==='zh-Hant'",
+                "selectLanguage('zh-hk')==='zh-Hant'",
+                "selectLanguage('zh-TW')==='zh-Hant'",
+                "selectLanguage('zh-tw')==='zh-Hant'",
+                "selectLanguage('zh-MO')==='zh-Hant'",
+                "selectLanguage('zh-mo')==='zh-Hant'",
+                "selectLanguage('zh-CHT')==='zh-Hant'",
+                "selectLanguage('zh-cht')==='zh-Hant'",
+                "selectLanguage('zh-Hant')==='zh-Hant'",
+                "selectLanguage('zh-hant')==='zh-Hant'",
+                "selectLanguage('zh-hant-hk')==='zh-Hant'",
+                "selectLanguage('zh-hant-mo')==='zh-Hant'",
+                "selectLanguage('zh-hant-tw')==='zh-Hant'",
+                "selectLanguage('ja-JP')==='ja'",
+                "selectLanguage('en-US')==='en'"],
+        i, result;
+    for (i = 0; i < expr.length; i += 1) {
+       try {
+         result = eval(expr[i]);
+         if (!result) {
+           debug_string(expr[i] + ': "' + result + '"');
+         }
+       } catch (ignore) {}
+    }
+  }());
+}
+function onLoad() {
+  "use strict";
+  switch (getSearchString()) {
+  case null:
+    redirect();
+    break;
+  case 'debug':
+    debug();
+    break;
+  }
+}
+</script>
+</head>
+<body onload="onLoad()">
+<h1>Select your language.</h1>
+<ul id="supportLanguages">
+  <li lang="en"><a href="readme/readme_en.htm">English</a></li>
+  <li lang="ja"><a href="readme/readme_ja.htm">日本語</a></li>
+  <li lang="zh-Hant"><a href="readme/readme_zh-Hant.htm">繁體中文</a></li>
+  <li lang="zh-Hans"><a href="readme/readme_zh-Hans.htm">简体中文</a></li>
+  <li lang="ko"><a href="readme/readme_ko.htm">한국어</a></li>
+  <li lang="th"><a href="readme/readme_th.htm">ไทย</a></li>
+  <li lang="vi"><a href="readme/readme_vi.htm">Tiếng Việt</a></li>
+  <li lang="id"><a href="readme/readme_id.htm">Bahasa Indonesia</a></li>
+  <li lang="de"><a href="readme/readme_de.htm">Deutsche</a></li>
+  <li lang="es"><a href="readme/readme_es.htm">Español</a></li>
+  <li lang="fr"><a href="readme/readme_fr.htm">Français</a></li>
+  <li lang="it"><a href="readme/readme_it.htm">Italiano</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en">
+<head>
+<title>Notes and Restrictions </title>
+<meta charset="utf-8">
+</head>
+<html><body>
+<center>
+----------------------------<br>
+Notes and Restrictions<br> 
+---------------------------- <br>
+</center>
+
+<ul>
+<li>When using Terminal Service in server OS, please run Setup Utility Tools with installation mode. <br> 
+The method to run the Installation Mode is as follows. <br> 
+- Open [Add or Remove programs] in [Control Panel] and then run Setup Utility Tools. 
+</li>
+<br>
+<li>During startup, the [User Account Control] screen is displayed depending on the permission of user who ran the tools. In that case, click [Allow] or enter administrator password and click [OK]. In addition, the [Program Compatibility Assistant] screen is displayed when quitting the tools. When [This program is installed correctly.] is selected, this screen will not be displayed next time. 
+</li>
+<br>
+<li>Selecting NDS Queue<br>
+Printing cannot be performed if a port/queue on the NDS tree that does not exist in the destination port is selected in the Setup Disk Creation Tool. </li>
+<br>
+<li>When &quot;An error has occurred during version upgrade&quot; is displayed during version upgrade, delete the print driver and create a new printer after restart. 
+</li>
+<br>
+<li>Restarting System During Installation/Version Upgrade<br>
+When installing the print driver or upgrading the driver version, always restart the system following the instructions given in the message displayed, before using the print driver. Unexpected errors may occur if the system is not restarted. 
+</li>
+<br>
+<li>Reflecting Document Size Using Setup Tool<br>
+When a paper unique to the driver is selected for document size, the document size will not be reflected correctly. 
+</li>
+<br>
+<li>If &quot;Current printer settings may be changed if you install the new driver. Do you want to continue?&quot; is displayed when installing driver with the Setup Tool, select the check box &quot;Upgrade driver using setup disk&quot; in the Setup Disk Creation Tool, and create a setup disk. 
+</li>
+<br>
+<li>If Setup Tool is created from a floppy disk using Setup Disk Creation Tool with &quot;Upgrade driver using setup disk&quot; selected, you cannot run the verup.exe in the floppy disk. Please run setup.exe. By running setup.exe, the print driver will also be upgraded. 
+</li>
+<br>
+<li>Method to Specify Port for Network Printer<br>
+Network printer port cannot be specified from the [Browse for Printer] screen in Setup Disk Creation Tool. Enter the port name directly in [Network path of printer] at the [Add Port] screen. 
+</li>
+<br>
+<li>Reflecting Printing Settings for Setup Tool<br>
+When you run the Setup Tool with [Allow general users to run setup] specified, the printing settings saved in the setup disk will be reflected to the printing settings of the administrator account. In addition, even when you run the Setup Tool without [Allow general users to run setup] specified but with the administrators account specified at the [User Account Control] screen, the printing settings saved in the setup disk will be reflected to the printing settings of the administrator account. To reflect the settings to the printing settings of all users including the user who ran the Setup Tool, configure [Printing Defaults] of the printer when creating the setup disk.  You can set [Printing Defaults] from the [Advanced] tab of the Printer Properties dialog.
+</li>
+<br><br>
+
+Microsoft, Windows, and Windows Server are registered trademarks or trademarks of Microsoft Corporation, U.S.A. in the United States and other countries. 
+</body></html>
