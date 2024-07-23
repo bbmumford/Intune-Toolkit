@@ -23,6 +23,11 @@ To get started, check out the following documentation
 
 To make things a little easier to navigate the repo has been split up into three main sections:
 
+For instructions on configuring and linking Apple Business Manager to Intune, see [this guide](ABM_to_Intune_Configuration.md).
+
+For instructions on deploy & manage apps from ABM VPP with Intune, see [this guide](VPP_with_Intune_Configuration.md).
+
+
 ## Apps
 
 This section is for scripts that install or configure applications on the Mac. There are many reasons to deploy apps via shell script rather than via the macOS mdmclient. Our preferred method of app deployment is via the [Mac App Store VPP](https://docs.microsoft.com/en-us/mem/intune/apps/vpp-apps-ios), but the Intune Scripting agent provides an almost infinte level of possibilities where the apps you need on your Macs can't be deployed via VPP.
