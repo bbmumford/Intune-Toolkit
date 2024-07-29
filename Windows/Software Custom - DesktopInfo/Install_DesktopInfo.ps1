@@ -1,5 +1,5 @@
 $PackageName = "DesktopInfo"
-$Description = "Zeigt den Hostname auf dem Desktop, unabhängig vom Hintergrund."
+$Description = "DesktopInfo"
 $Prg_path = "$Env:Programfiles\DesktopInfo"
 
 Start-Transcript -Path "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\$PackageName-install.log" -Force
