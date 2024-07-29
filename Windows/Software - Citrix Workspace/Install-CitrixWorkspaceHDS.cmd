@@ -1,1 +1,0 @@
-CitrixWorkspaceApp.exe /silent AutoUpdateStream=LTSR STORE0="HDS;https://hds.bamits.com.au/discovery;on;HDS"
