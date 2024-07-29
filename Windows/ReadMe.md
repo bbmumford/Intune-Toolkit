@@ -67,10 +67,6 @@
 
    - Set `I confirm that my tenant owns one of these licenses` to `On`.
 
-4. **Review Configuration Settings**
-   - Verify the settings as shown below:
-      Enable features that require Windows diagnostic data in processor configuration = On 
-      Windows license verification for Features, including the Windows 11 Upgrade Readiness report and Proactive remediations in Endpoint analytics = On
 
   
   Create an AutoEnrolment Deployment Security Group
