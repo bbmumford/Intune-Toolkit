@@ -22,6 +22,7 @@ Before you start, ensure you have the following:
 
 3. **Add an MDM Server**
    - Enter a name for the MDM server (e.g., `Intune`).
+   Unsure you download the token with a generic email account (non user specific) as the token will be issued under that email & removal of the account/email will expire the token.
    - Download the server token by clicking `Download Token` and save it to your computer.
    - Click `Save`.
 
