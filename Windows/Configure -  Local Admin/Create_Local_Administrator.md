@@ -27,3 +27,43 @@ To add a local account to devices in Intune, follow these steps:
 10. Save the profile and assign it to the desired devices or device groups.
 
 Once the profile is assigned, Intune will automatically add the local account to the targeted devices. This allows you to have a dedicated local account for administrative purposes on those devices.
+
+
+# ALTERNATIVLY: Enable & Rename the local default administartor account.
+
+Enable built-in Administrator account using Intune
+Enable a built-in Administrator account on Windows 10/11 devices using Intune by creating a Device configuration profile.
+
+1. Sign in to the Intune admin center.
+2. Go to Devices > Configuration > Create > New Policy.
+3. Enable built-in Administrator account using Intune
+4. Enable built-in Administrator account using Intune
+5. Select Platform as Windows 10 and later
+6. Profile type as Settings Catalog
+
+8. Configuration settings
+Click on the Add settings link, search for Local Policies Security Options, and Check the Accounts Enable Administrator Account status policy setting. Then, toggle the switch to Enable.
+
+
+Rename Built-in Administrator Account using Intune Policy
+To rename the built-in Local administrator account using Intune, follow below steps:
+
+1. Sign in to the Intune admin center.
+2. Go to Devices > Configuration > Policies tab > Create > New Policy.
+3. Rename Built-in Administrator Account using Intune Policy
+4. Rename Built-in Administrator Account using Intune Policy
+5. Select Platform as Windows 10 and later
+6. Profile type as Settings Catalog
+7. Enter the Name and Description of the profile. Click on Next to proceed.
+
+8. Configuration Settings
+Click on “+ Add settings“
+In the Settings picker, search for “rename admin“
+Under the Category Local Policy Security Options, Select “Accounts Rename Administrator Account“. Exit out of the Settings picker.
+Accounts: Rename administrator account This security setting determines whether a different account name is associated with the security identifier (SID) for the account Administrator. Renaming the well-known Administrator account makes it slightly more difficult for unauthorized persons to guess this privileged user name and password combination. Default: Administrator.
+
+About “Accounts Rename Administrator Account” Policy setting
+Rename Built-in Administrator Account using Intune Policy
+
+You can rename the built-in local administrator account using the ‘Accounts Rename Administrator Account’ setting‘. 
+Once the Intune policy is successfully applied, the built-in administrator account will be renamed.
