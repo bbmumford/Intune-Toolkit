@@ -9,5 +9,5 @@
 3. Add via Print Server:
     - This solution is useful when you have a print server in your network that manages multiple printers as well as print job authentication.
 
-For more detailed instructions, please refer to [this guide](/Windows/Entra_Profile_Location_Based_Dynamic_Groups.md).
-For instructions how to dynamicly target the appliocation based off someones office so that hey recive relative printers, see [this guide](/Windows/Entra_Profile_Location_Based_Dynamic_Groups.md).
+For more detailed instructions, please refer to [this guide](/Windows/GUIDE_Entra_Profile_Location_Based_Dynamic_Groups.md).
+For instructions how to dynamicly target the appliocation based off someones office so that hey recive relative printers, see [this guide](/Windows/GUIDE_Entra_Profile_Location_Based_Dynamic_Groups.md).

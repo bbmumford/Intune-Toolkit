@@ -58,6 +58,7 @@ This is a mobileconfig file that configures the Mac to use a specific path for w
 <string>/Library/Desktop/Wallpaper.jpg</string>
 ```
 
+https://thenewnumber2.com/2022/04/10/set-desktop-wallpaper-for-macos-intune-managed-devices/
 
 https://cloudinfra.net/how-to-set-desktop-wallpaper-on-macos-using-intune/
 
