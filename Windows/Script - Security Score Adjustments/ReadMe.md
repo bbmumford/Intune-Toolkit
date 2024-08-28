@@ -1,0 +1,1 @@
+Registry key changes to comply with numerous security score recommendations.
