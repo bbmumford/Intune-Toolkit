@@ -1,13 +1,13 @@
 <#
-Version: 1.0
+Version: 2.0
 Author: 
 - Brandon Miller-Mumford
 Script: EXE_Application_Downloader&Installer.ps1
 Description:
-Version 1.0: Init
-Run as: System
+Version 2.0: unique file name
+Run as: User
 Context: 64 Bit
-#> 
+#>
 
 param (
     [string]$DownloadUrl,
@@ -49,7 +49,10 @@ function Install-Application {
 }
 
 # Main script logic
-$installerPath = "$env:TEMP\installer.exe"
+
+# Generate a unique file name with timestamp
+$timestamp = Get-Date -Format "yyyyMMddHHmmss"
+$installerPath = "$env:TEMP\\installer_$timestamp.exe"
 
 # Download the file
 Download-File -url $DownloadUrl -output $installerPath

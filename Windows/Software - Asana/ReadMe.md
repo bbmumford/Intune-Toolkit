@@ -1,7 +1,7 @@
 Usage
 To use this script, pass the download URL and additional installer arguments as parameters. For example:
 
-powershell.exe -ExecutionPolicy Bypass -File .\EXE_Applcation_Downloader&Installer.ps1 -DownloadUrl "https://desktop-downloads.asana.com/win32_x64/prod/latest/AsanaSetup.exe" -InstallerArgs "/s"
+powershell.exe -ExecutionPolicy Bypass -File ".\EXE_Applcation_Downloader&Installer.ps1" -DownloadUrl "https://desktop-downloads.asana.com/win32_x64/prod/latest/AsanaSetup.exe" -InstallerArgs "/s"
 
 
 Explanation

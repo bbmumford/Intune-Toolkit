@@ -48,8 +48,9 @@ function Install-Application {
     }
 }
 
-# Main script logic
-$installerPath = "$env:TEMP\installer.msi"
+# Generate a unique file name with timestamp
+$timestamp = Get-Date -Format "yyyyMMddHHmmss"
+$installerPath = "$env:TEMP\\installer_$timestamp.msi"
 
 # Download the file
 Download-File -url $DownloadUrl -output $installerPath

@@ -1,7 +1,7 @@
 Usage
 To use this script, pass the download URL and additional installer arguments as parameters. For example:
 
-powershell.exe -ExecutionPolicy Bypass -File ".\MSI_Application_Downloader&Installer.ps1" -DownloadUrl "https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BA7E4480B-E7CE-93D3-C349-B3AA2D62E60D%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dtrue%26ap%3Dx64-stable-statsdef_0%26brand%3DGCEA/dl/chrome/install/googlechromestandaloneenterprise64.msi" -InstallerArgs "/q /l"
+powershell.exe -ExecutionPolicy Bypass -File ".\MSI_Application_Downloader&Installer.ps1" -DownloadUrl "https://slack.com/ssb/download-win64-msi" -InstallerArgs "INSTALLLEVEL=2 /qn /norestart"
 
 Explanation
 
