@@ -1,3 +1,16 @@
+<#
+Version: 1.0
+Author: 
+- Brandon Miller-Mumford
+Script: ZeroTier_Detection.ps1
+Description: Check if ZeroTier is installed & if device is part of input network.
+Version 1.0: Init
+Run as: System
+Context: 64 Bit
+Note: run with
+    powershell.exe -ExecutionPolicy Bypass -File "./ZeroTier_Detection.ps1"
+#> 
+
 # Define the ZeroTier network ID you want to check
 $correctNetworkID = "your_network_id_here"
 
@@ -37,4 +50,5 @@ if (Check-ZeroTierInstallation) {
     }
 } else {
     Write-Output "ZeroTier is not installed."
+    Exit 1
 }
