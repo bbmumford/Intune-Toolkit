@@ -101,9 +101,11 @@
 - [Enable LAPS for password managemnt](GUIDE_Intune_LAPS_Guide.md)
 - [Configure WiFi](Configure%20-%20Wi-Fi/GUIDE_Configure_WiFi.md)
 - [Configure Desktop Background](Configure%20-%20Background%20Image/GUIDE_Setup_Background_Images.md)
-  This is dependent on the `Software Custom - IntuneDependencies` package.
+  > This is dependent on the `Software Custom - IntuneDependencies` package.
 - [Configure Taskbar](Configure%20-%20Taskbar/GUIDE_Configure_Taskbar.md)
-  Deploy injunction with software.
+  > Deploy injunction with software.
+- [Configure Sharepoint OneDrive AutoSync](Configure%20-%20OneDrive%20(silent%20sync)/GUIDE_Intune_OneDrive_Sync.md)
+  > Recommended to deploy the bonus remediation script.
 - **Recommended System Software**
 ```
    |-Software Custom
@@ -126,7 +128,7 @@
 
 # Deploying Applications
 - [Dynamic Groups for Targeted Deployment](GUIDE_Entra_Profile_Location_Based_Dynamic_Groups.md)
-Use Case: Office or Department based application or printer deployment.
+  > **Use Case:** Office or Department based application or printer deployment.
 - **General Deployables**
 ```
    |-Software
