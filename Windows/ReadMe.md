@@ -80,7 +80,7 @@
 
   [Read the guide on how to manually import keys](Configure%20-%20Importing%20HASH%20Keys/GUIDE_Import_HASH_Keys.md)
 
-  ## Create Dynamic Enrolemnt Group
+  ## Create Dynamic Enrolment Group
   1. **Create a group on Azure AD Home**
   - Click on `Groups` > `New Group` > `Group Type` 
   - Select `Security` > Give a name and group description. 
