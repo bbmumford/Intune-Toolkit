@@ -1,12 +1,10 @@
-Install command
- %SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -command .\LoadingScreen.ps1
-Uninstall command
-cmd.exe rd "%localappdata%\IntuneDependencies\DeviceConfigurationComplete.txt" /s /q
+#### Install command
+ `%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -command .\LoadingScreen.ps1`
 
-Install behavior
-User
+Install as **User**
 
-Rules format
-Manually configure detection rules
-Detection rules
-File %localappdata%\IntuneDependencies\DeviceConfigurationComplete.txt
+#### Uninstall command
+`cmd.exe rd "%localappdata%\IntuneDependencies\DeviceConfigurationComplete.txt" /s /q`
+
+#### Detection Rule
+File Exists `%localappdata%\IntuneDependencies\DeviceConfigurationComplete.txt`

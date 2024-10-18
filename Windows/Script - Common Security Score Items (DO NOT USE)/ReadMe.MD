@@ -1,4 +1,7 @@
-DO NOT USE. This Script is an active work in progress to address as many security score items as possible without the necessity of a domain controller.
+
+> [!CAUTION] 
+> DO NOT USE. 
+> This Script is an active work in progress to address as many security score items as possible without the necessity of a domain controller.
 
 Explanation
 1. Windows Defender: Ensures that Windows Defender Antivirus is enabled and set to start automatically.
