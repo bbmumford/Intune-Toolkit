@@ -1,6 +1,5 @@
 # Ignore directories starting with _
 _*/
-Linux/
 Android/
 iOS/
 .DS_Store
