@@ -9,8 +9,10 @@
 
 This part of the repository is for macOS Intune collected scripts and configuration profiles.
 
-### Guides:
+## Prerequisites
 - [Configuring & linking Apple Business Manager to Intune](GUIDE_ABM_to_Intune_Configuration.md)
+
+### Additional Guides:
 
 - [Deploy & manage apps from ABM VPP with Intune](GUIDE_VPP_with_Intune_Configuration.md)
 
