@@ -133,6 +133,7 @@
 ```
    |-Software
    |---Asana
+   |---Adobe Unified (Acrobat & Reader)
    |---Bitdefender
    |---Citrix Workspace
    |---Google Chrome

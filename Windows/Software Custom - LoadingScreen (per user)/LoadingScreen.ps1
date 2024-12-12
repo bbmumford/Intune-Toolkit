@@ -1,14 +1,12 @@
 ﻿<#
-Version: 1.0
+Version: 2
 Author: 
 - Brandon Miller-Mumford
 Script: LoadingScreen.ps1
-Description: 
-Version 1.0: Init
+Description: Updated to use registry key for installation detection
 Run as: User
 Context: 64 Bit
-#> 
-
+#>
 
 Add-Type -AssemblyName PresentationFramework
 
@@ -66,22 +64,21 @@ $Window.add_KeyDown({
 
 # Schedule a restart after 1 hour and 30 minutes
 $script = {
-# Define the directory and file
-$directory = "$env:USERPROFILE\AppData\Local\IntuneDependencies"
-$file = 'DeviceConfigurationComplete.txt'
+    # Define the registry key and value
+    $regPath = "HKCU:\Software\IntuneDependencies"
+    $regName = "DeviceConfigurationComplete"
 
-# Check if directory exists and create if not
-if (-not (Test-Path $directory)) {
-    New-Item -Path $directory -ItemType Directory -Force
-}
+    # Check if registry path exists and create if not
+    if (-not (Test-Path $regPath)) {
+        New-Item -Path $regPath -Force | Out-Null
+    }
 
-# Create the file
-$filePath = Join-Path -Path $directory -ChildPath $file
-New-Item -Path $filePath -ItemType File -Force
-    
+    # Create the registry value
+    Set-ItemProperty -Path $regPath -Name $regName -Value $true -Force
+
     # Wait for 1 hour and 30 minutes (5400 seconds)
-    Start-Sleep -Seconds 4000
-    
+    Start-Sleep -Seconds 5400
+
     # Restart the computer
     Restart-Computer -Force
 }
