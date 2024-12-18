@@ -326,8 +326,7 @@ When deplying applications, some will be per user, either by the requirements or
 
 You as an admin may not want the user to access the desktop while it is not prepared.
 
-My custom solution to this is this custom [Loading Screen](Software%20Custom%20-%20LoadingScreen%20(per%20user)/ReadMe.md) which will run once on for the user, locking out the desktop in a full screen window for 1.5 hours (set by `Start-Sleep -Seconds 5400`) 
-`Ctrl + Shift + M` will also force close the  window / script.
+My custom solution to this is this custom [Loading Screen](Software%20Custom%20-%20LoadingScreen%20(per%20user)/ReadMe.md) which will run once for the user, locking out the desktop in a full screen window while disabling key presses for 1.5 hours (set by `Start-Sleep -Seconds 5400`) however `Ctrl + Shift + M` will also force close the  window / script.
 
 ```
    |-Software Custom
