@@ -80,7 +80,7 @@ Intune will automatically add the local account to targeted devices, providing a
 
 ## Part 2 (Approach 2): Enabling and Renaming the Built-in Administrator Account
 
-### Enabling the Built-in Administrator Account
+### Enable & Rename the Built-in Administrator Account via Settings Catalog
 
 Enable the default built-in Administrator account on Windows 10/11 devices using the following steps:
 
@@ -88,32 +88,95 @@ Enable the default built-in Administrator account on Windows 10/11 devices using
 2. Navigate to **Devices > Configuration profiles > Create > New Policy**.
 3. Select **Platform** as **Windows 10 and later**.
 4. Choose **Profile type** as **Settings Catalog**.
-5. In **Configuration settings**, click **Add settings**, search for **Local Policies Security Options**, and select **Accounts: Enable Administrator Account**.
-6. Toggle the setting to **Enable**.
-7. Save the profile and assign it to the desired devices or device groups.
+5. Provide a **Name** and **Description** for the profile. Click **Next**.
+    - Name the policy something clear such as **Configure-LocalAdministratorAccount**
+6. In **Configuration settings**, click **Add settings**, search for **Local Policies Security Options**, select **Accounts Enable Administrator Account** & select **Accounts: Rename Administrator Account**.
+7. Toggle the setting to **Enable** & set the desired name.
+8. Save the profile and assign it to the desired devices or device groups.
 
----
-
-### Renaming the Built-in Administrator Account
+### ALTERNATIVELY Renaming the Built-in Administrator Account via Template Endpoint protection 
 
 To rename the built-in Administrator account:
 
 1. Log in to the **Intune admin center**.
 2. Navigate to **Devices > Configuration profiles > Create > New Policy**.
 3. Select **Platform** as **Windows 10 and later**.
-4. Choose **Profile type** as **Settings Catalog**.
+4. Choose **Profile type** as **Templates**.
+3. Select **Endpoint Protection**
 5. Provide a **Name** and **Description** for the profile. Click **Next**.
-6. In **Configuration settings**, click **Add settings**.
-7. Search for "rename admin" in the **Settings picker**.
-8. Under **Local Policies Security Options**, select **Accounts: Rename Administrator Account**.
-9. Configure the new name for the Administrator account and save the profile.
+    - Name the policy something clear such as **AdministratorAccount-Rename**
+6. In **Configuration settings**, click **Local device security options**.
+7. Under "Admin", in the **Rename admin account** field, enter the desired name.
+8. Save the profile and assign it to the desired devices or device groups.
 
-### About the Rename Policy:
+---
 
-The **Accounts: Rename Administrator Account** policy changes the default name of the built-in Administrator account. Renaming the account makes it more challenging for unauthorized users to guess the username-password combination.
+## Part 3: Configuring Intune Device User Local Administrator Privileges via Endpoint Security
 
-### Result:
-Once the policy is applied, the built-in Administrator account will be renamed, enhancing security.
+### 1. Navigate to Endpoint Security:
+- Open the **Microsoft Endpoint Manager Admin Center**: [https://endpoint.microsoft.com](https://endpoint.microsoft.com).
+- Go to **Endpoint Security** > **Account protection**.
+
+### 2. Create an Account Protection Policy:
+- Select **+ Create Policy**.
+- Choose the platform: **Windows 10 and later**.
+- Select the profile type: **Local user group membership**.
+- **Recommended Policy Name**: 
+  - Use a clear and descriptive naming convention such as:
+    - **"AccountProtection-LocalAdmins-AllDevices"**: For global scope.
+    - **"AccountProtection-LocalAdmins-US"**: For regional-specific policies.
+    - **"AccountProtection-LocalAdmins-ITSupport"**: For IT Support administrator groups.
+
+### 3. Configure Local Administrator Membership:
+- In the **Local user group membership** settings:
+  - Choose **Administrators** for the group.
+  - Add the **Device Local Admins** group (associated with the **Microsoft Entra Joined Device Local Administrator** role):
+    - Go to the **Azure Portal**: [https://portal.azure.com](https://portal.azure.com).
+    - Navigate to **Azure Active Directory** > **Roles and administrators**.
+    - Locate the & add the **Device Local Admins** group.
+      - This group is associated to the **Microsoft Entra Joined Device Local Administrator** role.
+    - Alternatively assign users or additional groups (e.g., IT Support, regional admins) to the **Device Local Admins** group for centralized management.
+
+### 4. Best Practice Naming Conventions for Groups:
+To maintain clarity and scalability, use structured and descriptive names for groups:
+
+#### Global Scope:
+- **Global-Device-Admins**: For users who need administrative access to all devices across the organization.
+- **Global-IT-Admins**: Broader administrative role encompassing devices, Intune policies, and configurations.
+
+#### Regional Scope:
+- **Device-Admins-US**: Local admin access for devices in the US region.
+- **Device-Admins-EU**: For administrative roles tied to Europe-based devices.
+
+#### Role-Specific or Functional Teams:
+- **Device-Local-Admins** (default): Used for the **Microsoft Entra Joined Device Local Administrator** role.
+- **Helpdesk-Admins-Tier1**: For IT Help Desk or Tier 1 support staff who may require temporary elevated access.
+- **Device-Support-Admins**: Specific groups for IT or support teams managing devices in specific areas or departments.
+
+### 5. Assign the Policy:
+- Under **Assignments**, target the policy to **device groups** or **user groups**:
+  - Example: Assign to dynamic groups like:
+    - `Intune_Devices_All`: All devices under management.
+    - `Intune_Devices_Enrolled`: Devices that have completed enrollment.
+    - `Intune_Devices_{OrderID}`: Devices based on project or department requirements.
+
+### 6. Monitor Policy Deployment:
+- Go to **Endpoint Security** > **Account protection** to view the policy deployment status.
+
+### Why Naming Conventions Matter:
+- **Clarity**: Simplifies understanding of group purpose and scope.
+- **Scalability**: Enables seamless addition of new groups or changes in scope (e.g., by region or department).
+- **Automation**: Integrates well with dynamic group rules for Intune or Azure AD.
+
+#### Example Scenarios:
+- Assigning **Device-Local-Admins** ensures users are automatically added to the correct local administrator group during device enrollment.
+- Using **Intune_Devices_Prepare** or **Intune_Devices_Enrolled** for assignments ensures consistent targeting of devices.
+- Naming the policy **"AccountProtection-LocalAdmins-AllDevices"** makes it immediately clear what the policy does and its target scope.
+
+### Summary of Recommendations:
+- **Policy Name**: "AccountProtection-LocalAdmins-{Scope}"
+  - Replace `{Scope}` with "AllDevices," "US," "EU," or other regions or teams as needed.
+- **Group Naming**: Use structured names like `Global-Device-Admins`, `Device-Admins-US`, or `Helpdesk-Admins-Tier1`.
 
 ---
 

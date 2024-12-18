@@ -6,7 +6,8 @@ To set the desktop and lock screen backgrounds in Intune, follow these steps:
 4. Give the profile a name and select "Device restrictions" as the profile type.
 5. Under "Settings", click on "Personalization".
 6. In the "Desktop" section, click on "Add" and select "Image".
-7. Specify the path to the desktop wallpaper file by entering `"C:\IntuneDependencies\Desktop_Wallpaper.png"`.
+7. Specify the path to the desktop wallpaper file by entering or enter web publicly accessible web address of an image.
+`"C:\IntuneDependencies\Desktop_Wallpaper.png"`.
 8. Configure any additional settings for the desktop background, such as the fit, fill, or stretch options.
 9. In the "Lock screen" section, repeat steps 6-8 to set the lock screen background.
 10. Once you have configured the desired settings, click on "OK" to save the profile.
