@@ -2,27 +2,7 @@
 
 This guide outlines the steps to set up a local admin account in Intune and configure the Local Administrator Password Solution (LAPS) for managing the password.
 
-## Part 1: Configuring LAPS in Intune
-
-Follow these steps to enable and configure LAPS:
-
-1. Log in to the Intune portal using your administrator credentials.
-2. Navigate to the **Devices** tab and select **Configuration profiles** from the left-hand menu.
-3. Click **Create profile** and choose **Windows 10 and later** as the platform.
-4. Select **Endpoint protection** as the profile type.
-5. Provide a name for the profile and click on **Settings**.
-6. Scroll down to the **Local Administrator Password Solution (LAPS)** section and enable it.
-7. Configure the desired settings for LAPS, such as:
-   - Password complexity requirements
-   - Password expiration
-8. Save the profile and assign it to the desired devices or device groups.
-
-### Result:
-Once assigned, Intune will automatically manage the local admin account's password on targeted devices using LAPS. This ensures the password is regularly rotated and securely stored.
-
----
-
-## Part 2 (Approach 1): Adding a Local Account in Intune
+## Part 1 (Approach 1): Adding a Local Account in Intune
 
 To add a dedicated local account for administrative purposes, follow these steps:
 
@@ -78,7 +58,7 @@ Intune will automatically add the local account to targeted devices, providing a
 
 ---
 
-## Part 2 (Approach 2): Enabling and Renaming the Built-in Administrator Account
+## Part 1 (Approach 2): Enabling and Renaming the Built-in Administrator Account
 
 ### Enable & Rename the Built-in Administrator Account via Settings Catalog
 
@@ -117,7 +97,7 @@ To rename the built-in Administrator account:
 
 ---
 
-## Part 3: Configuring Intune Device User Local Administrator Privileges via Endpoint Security
+## Part 2: Configuring Intune Device User Local Administrator Privileges via Endpoint Security
 
 ### 1. Navigate to Endpoint Security:
 - Open the **Microsoft Endpoint Manager Admin Center**: [https://endpoint.microsoft.com](https://endpoint.microsoft.com).
