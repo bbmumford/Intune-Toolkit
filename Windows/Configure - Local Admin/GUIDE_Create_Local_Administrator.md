@@ -84,6 +84,12 @@ Intune will automatically add the local account to targeted devices, providing a
 
 Enable the default built-in Administrator account on Windows 10/11 devices using the following steps:
 
+**Note**: This method can fail in the order of events & is best deployed injunction with the remediation script.
+```
+   |-Script
+   |---Configure-LocalAdministrator
+```
+
 1. Log in to the **Intune admin center**.
 2. Navigate to **Devices > Configuration profiles > Create > New Policy**.
 3. Select **Platform** as **Windows 10 and later**.
