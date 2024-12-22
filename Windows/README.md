@@ -103,7 +103,7 @@ Importing HASH Keys allows a device to be assigned to a Tenant upon the devices 
 
 ### **Create Dynamic Enrollment Group**
 
-See [Group Structure and Membership](#3-group-structure-and-membership)
+See [Recommended Group Structure and Membership](#3-group-structure-and-membership) & the [Dynamic Groups for Targeted Deployment Guide](GUIDE_Entra_Profile_Location_Based_Dynamic_Groups.md) for additional group conditions.
 
 1. Navigate to **Azure AD > Groups**.  
 2. Create a new group:  
@@ -247,6 +247,7 @@ Device Registered in Autopilot --> Intune_Devices_Enrolled (Assigned Profile)
 ## 3. Group Structure and Membership
 
 ### **Dynamic Groups**
+- See the [Dynamic Groups for Targeted Deployment Guide](GUIDE_Entra_Profile_Location_Based_Dynamic_Groups.md) for additional group conditions.
 
 | **Group Name**               | **Dynamic Query**                                                    | **Purpose**                             |
 |------------------------------|----------------------------------------------------------------------|-----------------------------------------|
