@@ -1,5 +1,5 @@
 ﻿<#
-Version: 2
+Version: 2.1
 Author: 
 - Brandon Miller-Mumford
 Script: LoadingScreen.ps1
@@ -23,7 +23,7 @@ $xaml = @"
         <DropShadowEffect Color='Black' BlurRadius='20' ShadowDepth='0' Opacity='0.5'/>
     </Window.Effect>
     <Grid>
-        <TextBlock Text='It's your first time logging-in. Just a moment while device is being configured...'
+        <TextBlock Text='It&#39;s your first time logging in. Just a moment while the device is being configured...'
                    Foreground='White'
                    FontSize='48'
                    FontFamily='Segoe UI'
@@ -42,24 +42,27 @@ $xaml = @"
 </Window>
 "@
 
-# Load the XAML
-[xml]$xamlWindow = $xaml
-$reader = (New-Object System.Xml.XmlNodeReader $xamlWindow)
-$Window = [Windows.Markup.XamlReader]::Load($reader)
+# Parse the XAML
+Add-Type -AssemblyName System.IO
+Add-Type -AssemblyName System.Xml
+
+$reader = New-Object System.IO.StringReader($xaml)
+$xmlReader = [System.Xml.XmlReader]::Create($reader)
+$Window = [Windows.Markup.XamlReader]::Load($xmlReader)
 
 # Define the KeyDown event handler function
-function Window_KeyDown {
-    param ($sender, $e)
-    if ($e.Key -eq [System.Windows.Input.Key]::M -and
+function HandleWindowKeyDown {
+    param ($windowSource, $keyEvent)
+    if ($keyEvent.Key -eq [System.Windows.Input.Key]::M -and
         [System.Windows.Input.Keyboard]::Modifiers -eq ([System.Windows.Input.ModifierKeys]::Control -bor [System.Windows.Input.ModifierKeys]::Shift)) {
-        $sender.Close()
+        $windowSource.Close()
     }
 }
 
 # Attach the KeyDown event handler to the Window
 $Window.add_KeyDown({
-    param ($sender, $e)
-    Window_KeyDown -sender $sender -e $e
+    param ($windowSource, $keyEvent)
+    HandleWindowKeyDown -windowSource $windowSource -keyEvent $keyEvent
 })
 
 # Schedule a restart after 1 hour and 30 minutes
