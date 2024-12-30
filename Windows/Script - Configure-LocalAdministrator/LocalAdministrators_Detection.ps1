@@ -1,17 +1,27 @@
 # Define the expected administrator account name
 $ExpectedAdminName = "Company.LocalAdmin"
 
-# Find the Administrator account (SID ending in -500)
-$AdminAccount = Get-LocalUser | Where-Object { $_.SID -like "S-1-5-*-500" }
+# Find all local accounts
+$AllAccounts = Get-LocalUser
 
-# Check if the account exists
+# Find the default Administrator account (SID ending in -500)
+$AdminAccount = $AllAccounts | Where-Object { $_.SID -like "S-1-5-*-500" }
+
+# Find other accounts with the same name as the expected administrator
+$DuplicateAccounts = $AllAccounts | Where-Object { $_.Name -eq $ExpectedAdminName -and $_.SID -ne $AdminAccount.SID }
+
+# Check if the default Administrator account exists
 if ($AdminAccount) {
-    # Check if the account is renamed and enabled
     if ($AdminAccount.Name -eq $ExpectedAdminName -and $AdminAccount.Enabled) {
-        Write-Output "Compliant: Administrator account is renamed to '$ExpectedAdminName' and enabled."
-        exit 0 # Success - Compliant
+        if ($DuplicateAccounts) {
+            Write-Error "Non-Compliant: Duplicate account(s) with name '$ExpectedAdminName' found."
+            exit 1 # Failure - Non-Compliant
+        } else {
+            Write-Output "Compliant: Administrator account is properly configured."
+            exit 0 # Success - Compliant
+        }
     } else {
-        Write-Error "Non-Compliant: Administrator account is not renamed or not enabled."
+        Write-Error "Non-Compliant: Administrator account is not properly configured."
         exit 1 # Failure - Non-Compliant
     }
 } else {
