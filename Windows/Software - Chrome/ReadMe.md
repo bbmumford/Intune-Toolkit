@@ -2,6 +2,9 @@
 
 This guide will walk you through the process of deploying applications to Microsoft Intune using the provided script [`Application_Downloader&Installer.ps1`](https://github.com/bbmumford/Intune-Toolkit/blob/main/Windows/Software%20-%20TEMPLATE/Application_Downloader%26Installer.ps1).
 
+> [!NOTE]  
+> Needs to be upgraded to use latest Software - TEMPLATE solution.
+
 ---
 
 ## Prerequisites

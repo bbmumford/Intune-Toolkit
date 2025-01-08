@@ -64,9 +64,9 @@ Main Script:
 - Installs the application with the additional arguments.
 - Cleans up by removing the downloaded file.
 
-**Uninstall Command**: Modify this command based on your app's uninstallation requirements. For example:
-```cmd
-msiexec /x {PRODUCT_CODE} /qn /norestart
+**Uninstall Command**: The uninsatll script finds the correct GUID based off the appliation name then uninstalls the app based on if it is a msi or exe. Use the following:
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File ".\Application_Uninstaller.ps1" -AppName "Application Name"
 ```
 
 ### 5. Assign the App
