@@ -1,10 +1,10 @@
 <#
-Version: 3.1
+Version: 3.2
 Author: 
 - Brandon Miller-Mumford
 Script: Application_Downloader&Installer.ps1
 Description:
-Version 3.1: Preserve the file type based on download URL or HTTP headers
+Version 3.2: Optimized download process with Start-BitsTransfer and improved file extension determination.
 Run as: System/User
 Context: 64 Bit
 #>
@@ -39,13 +39,15 @@ function Get-FileExtension {
         return ($url -split "\.")[-1]
     }
 
-    # If no extension in URL, attempt to get it from HTTP headers
+    # Attempt to get it from HTTP headers
     try {
         $response = Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing
-        if ($response.Headers["Content-Type"] -match "application/x-msi") {
+        if ($response.Headers["Content-Type"] -match "application/(x-msi|msi)") {
             return "msi"
-        } elseif ($response.Headers["Content-Type"] -match "application/x-executable") {
+        } elseif ($response.Headers["Content-Type"] -match "application/(x-executable|exe)") {
             return "exe"
+        } elseif ($response.Headers["Content-Disposition"] -match 'filename=".*\.(\w+)"') {
+            return $matches[1]
         }
     } catch {
         Log-Message "Unable to determine file extension from HTTP headers: $_" "WARN"
@@ -64,7 +66,7 @@ function Download-FileAsync {
 
     try {
         Log-Message "Downloading $url to $output"
-        Invoke-WebRequest -Uri $url -OutFile $output -UseBasicParsing
+        Start-BitsTransfer -Source $url -Destination $output -ErrorAction Stop
         Log-Message "Download complete"
     } catch {
         Log-Message "Failed to download file: $_" "ERROR"

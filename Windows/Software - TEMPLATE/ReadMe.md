@@ -69,6 +69,11 @@ Main Script:
 powershell.exe -ExecutionPolicy Bypass -File ".\Application_Uninstaller.ps1" -AppName "Application Name"
 ```
 
+Some applications will include a uninstall flag with the installer, in that case you can reuse the installer script with an /uninstall argument, see below an example of `Logi Options+`
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File ".\Application_Downloader&Installer.ps1" -DownloadUrl "https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.exe" -InstallerArgs "/uninstall"
+```
+
 ### 5. Assign the App
 1. Assign the app to the appropriate groups or users:
 - Navigate to Assignments in the app configuration.
