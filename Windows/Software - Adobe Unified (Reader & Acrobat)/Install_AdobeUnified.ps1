@@ -1,3 +1,44 @@
+<#
+.SYNOPSIS
+    Installs Adobe Acrobat DC
+
+.DESCRIPTION
+    Downloads and installs Adobe Acrobat DC (professional PDF editor).
+    
+    Downloads the full web installer package, extracts it, and runs the
+    silent installation with enterprise deployment options.
+    
+.NOTES
+    FileName:    Install_AdobeUnified.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Internet connection required
+    - Windows 10/11
+    - Sufficient disk space (~500MB)
+    
+    Exit Codes:
+    - 0: Installation successful
+    - 1: Installation failed
+    
+    External Dependencies:
+    - Adobe Acrobat DC Web Installer (downloaded from Adobe)
+    
+    Impact:
+    - Downloads ~400MB installer to temp folder
+    - Installs Adobe Acrobat DC for all users
+    - Requires internet connectivity during installation
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 $DownloadUrl = "https://trials.adobe.com/AdobeProducts/APRO/Acrobat_HelpX/win32/Acrobat_DC_Web_x64_WWMUI.zip"
 $TempPath = "$env:TEMP\AcrobatInstaller"
 $ZipFile = "$TempPath\AcrobatInstaller.zip"

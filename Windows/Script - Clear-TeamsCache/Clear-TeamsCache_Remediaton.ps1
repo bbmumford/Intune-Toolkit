@@ -1,13 +1,50 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: Clear-TeamsCache_Remediation.ps1
-Description: 
-Version 1.0: Init
-Run as: User
-Context: 64 Bit
-#> 
+.SYNOPSIS
+    Clears Microsoft Teams cache to resolve performance issues
+
+.DESCRIPTION
+    Quits Microsoft Teams and clears all cache files from the user's AppData folder.
+    Clears the following cache directories:
+    - %APPDATA%\Microsoft\Teams\Cache
+    - %APPDATA%\Microsoft\Teams\blob_storage
+    - %APPDATA%\Microsoft\Teams\databases
+    - %APPDATA%\Microsoft\Teams\GPUCache
+    - %APPDATA%\Microsoft\Teams\IndexedDB
+    - %APPDATA%\Microsoft\Teams\Local Storage
+    - %APPDATA%\Microsoft\Teams\tmp
+    
+    Resolves issues such as:
+    - Performance degradation
+    - Login failures
+    - Sync problems
+    - Corrupt data
+    
+.NOTES
+    FileName:    Clear-TeamsCache_Remediation.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: User (APPDATA context)
+    - Context: 64 Bit
+    - Microsoft Teams (Classic or New)
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Remediation successful (cache cleared)
+    - 1: Remediation failed
+    
+    Impact:
+    - Teams will close automatically
+    - User will need to restart Teams
+    - All cache data will be regenerated
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 
 Write-Host "Microsoft Teams will be quit now in order to clear the cache."
 try{

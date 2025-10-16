@@ -1,25 +1,60 @@
 <#
-.Synopsis
-Created on:   31/12/2021
-Created by:   Ben Whitmore
-Filename:     Install-Printer.ps1
+.SYNOPSIS
+    Installs a network printer via IP address using INF driver
 
-Simple script to install a network printer from an INF file. The INF and required CAB files hould be in the same directory as the script if creating a Win32app
-
-#### Win32 app Commands ####
-
-Install:
-powershell.exe -executionpolicy bypass -file .\Install-Printer.ps1 -PortName "IP_10.10.1.1" -PrinterIP "10.1.1.1" -PrinterName "Canon Printer Upstairs" -DriverName "Canon Generic Plus UFR II" -INFFile "CNLB0MA64.inf"
-
-Uninstall:
-powershell.exe -executionpolicy bypass -file .\Remove-Printer.ps1 -PrinterName "Canon Printer Upstairs"
-
-Detection:
-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Print\Printers\Canon Printer Upstairs
-Name = "Canon Printer Upstairs"
-
-.Example
-.\Install-Printer.ps1 -PortName "IP_10.10.1.1" -PrinterIP "10.1.1.1" -PrinterName "Canon Printer Upstairs" -DriverName "Canon Generic Plus UFR II" -INFFile "CNLB0MA64.inf"
+.DESCRIPTION
+    Installs a network printer by creating a TCP/IP port and installing the
+    printer driver from an INF file. The INF and required CAB files should
+    be in the same directory as the script when creating a Win32 app.
+    
+    Supports enterprise printer deployment via Intune Win32 apps.
+    
+    Parameters:
+    - $PortName: TCP/IP port name (e.g., "IP_10.10.1.1") (required)
+    - $PrinterIP: IP address of the printer (required)
+    - $PrinterName: Display name for the printer (required)
+    - $DriverName: Exact driver name from INF (required)
+    - $INFFile: INF filename in same directory (required)
+    
+.NOTES
+    FileName:    Install-Printer.ps1
+    Author:      Ben Whitmore
+    Created:     2021-12-31
+    Modified:    2025-10-17
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Windows 10/11
+    - INF and CAB files in same directory
+    
+    Exit Codes:
+    - 0: Printer installed successfully
+    - 1: Installation failed
+    
+    Usage - Win32 App Commands:
+    
+    Install:
+    powershell.exe -executionpolicy bypass -file .\Install-Printer.ps1 -PortName "IP_10.10.1.1" -PrinterIP "10.1.1.1" -PrinterName "Canon Printer Upstairs" -DriverName "Canon Generic Plus UFR II" -INFFile "CNLB0MA64.inf"
+    
+    Uninstall:
+    powershell.exe -executionpolicy bypass -file .\Remove-Printer.ps1 -PrinterName "Canon Printer Upstairs"
+    
+    Detection:
+    Registry Key: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Print\Printers\Canon Printer Upstairs
+    Value Name: "Canon Printer Upstairs"
+    
+    Example:
+    .\Install-Printer.ps1 -PortName "IP_10.10.1.1" -PrinterIP "10.1.1.1" -PrinterName "Canon Printer Upstairs" -DriverName "Canon Generic Plus UFR II" -INFFile "CNLB0MA64.inf"
+    
+    External Dependencies:
+    - Printer driver INF file
+    - Associated CAB files for driver
+    
+    Change Log:
+    v1.0 - Initial release
 #>
 
 [CmdletBinding()]

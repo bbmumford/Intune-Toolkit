@@ -1,13 +1,38 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: Configure-CitrixWorkspace_Detection.ps1
-Description: 
-Version 1.0: Init
-Run as: User
-Context: 64 Bit
-#> 
+.SYNOPSIS
+    Detects if Citrix Workspace registry settings are configured
+
+.DESCRIPTION
+    Validates that Citrix Workspace application has the correct registry
+    settings configured for enterprise use. Checks multiple registry keys
+    to ensure compliance with organizational Citrix configuration standards.
+    
+.NOTES
+    FileName:    Configure-CitrixWorkspace_Detection.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: User (HKCU registry context)
+    - Context: 64 Bit
+    - Citrix Workspace installed
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (all Citrix settings configured)
+    - 1: Non-Compliant (triggers remediation)
+    
+    Purpose:
+    - Enforce enterprise Citrix Workspace settings
+    - Ensure consistent user experience
+    - Configure store URLs and preferences
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 #region Define registry keys to validate here
 $RegistrySettingsToValidate = @(
     [pscustomobject]@{

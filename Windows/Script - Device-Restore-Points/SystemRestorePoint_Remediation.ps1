@@ -1,3 +1,44 @@
+<#
+.SYNOPSIS
+    Configures and creates system restore points
+
+.DESCRIPTION
+    Enables Windows System Restore and creates restore points:
+    - Enables System Protection on C: drive
+    - Sets maximum disk usage to 10 GB
+    - Creates a new restore point if needed
+    - Uses embedded C# code for restore point management
+    
+    Ensures users can recover from system issues by maintaining regular restore points.
+    
+.NOTES
+    FileName:    SystemRestorePoint_Remediation.ps1
+    Author:      
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Windows 7/8/10/11
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Remediation successful (restore point created)
+    - 1: Remediation failed
+    
+    Actions:
+    - Enables System Protection if disabled
+    - Configures 10 GB maximum disk usage
+    - Creates restore point with "Intune Remediation Script" description
+    - Retries up to 3 times if failures occur
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 # Variables
 $restorePointDescription = "Restore Point Created by Intune Remediation Script"
 $restorePointType = 12 # MODIFY_SETTINGS

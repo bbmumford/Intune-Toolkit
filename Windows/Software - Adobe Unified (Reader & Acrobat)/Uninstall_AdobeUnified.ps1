@@ -1,3 +1,39 @@
+<#
+.SYNOPSIS
+    Uninstalls Adobe Acrobat DC
+
+.DESCRIPTION
+    Removes Adobe Acrobat DC from the system by locating and executing
+    the uninstaller from the registry.
+    
+    Searches the Windows registry for the Adobe Acrobat DC uninstall string
+    and executes it silently.
+    
+.NOTES
+    FileName:    Uninstall_AdobeUnified.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Windows 10/11
+    
+    Exit Codes:
+    - 0: Uninstallation successful
+    - 1: Uninstallation failed or product not found
+    
+    Impact:
+    - Removes Adobe Acrobat DC completely
+    - PDF association may revert to default Windows reader
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 $ProductName = "Adobe Acrobat DC"
 $UninstallKeyPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"
 $TempPath = "$env:TEMP\AcrobatUninstall"

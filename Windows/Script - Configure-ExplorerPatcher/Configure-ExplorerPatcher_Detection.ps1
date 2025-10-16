@@ -1,13 +1,40 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: Configure-ExplorerPatcher_Detection.ps1
-Description: 
-Version 1.0: Init
-Run as: User
-Context: 64 Bit
-#> 
+.SYNOPSIS
+    Detects if ExplorerPatcher registry settings are configured
+
+.DESCRIPTION
+    Validates that ExplorerPatcher (Windows 11 Start Menu and Taskbar customization tool)
+    has the correct registry settings configured for organizational preferences.
+    
+    ExplorerPatcher allows restoring Windows 10-style UI elements in Windows 11.
+    
+.NOTES
+    FileName:    Configure-ExplorerPatcher_Detection.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: User (HKCU registry context)
+    - Context: 64 Bit
+    - Windows 11
+    - ExplorerPatcher installed
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (ExplorerPatcher settings configured)
+    - 1: Non-Compliant (triggers remediation)
+    
+    Purpose:
+    - Enforce consistent UI customization settings
+    - Configure Windows 11 Start Menu and Taskbar appearance
+    - Maintain organizational UI standards
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 
 # Output: (single line)
 #  For each key: {Name of the key} + {Error Values} (max 37 characters)

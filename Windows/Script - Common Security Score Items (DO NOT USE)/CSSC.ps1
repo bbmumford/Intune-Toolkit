@@ -1,12 +1,42 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: CSSC.ps1
-Description: Common Security Score Compliance Script
-Version 1.0: unique file name
-Run as: System
-Context: 64 Bit
+.SYNOPSIS
+    Common Security Score Compliance Script (DEPRECATED - DO NOT USE)
+
+.DESCRIPTION
+    ⚠️ WARNING: This script is deprecated and should NOT be used.
+    
+    Originally designed to configure common Microsoft Secure Score compliance
+    items via registry modifications. This approach is no longer recommended.
+    
+    Use Group Policy, Intune Configuration Profiles, or Endpoint Security
+    policies instead for proper security configuration management.
+    
+.NOTES
+    FileName:    CSSC.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System
+    - Context: 64 Bit
+    
+    Exit Codes:
+    - 0: Script executed (not recommended for use)
+    
+    ⚠️ DEPRECATION NOTICE:
+    This script is provided for reference only. Do NOT use in production.
+    
+    Recommended Alternatives:
+    - Microsoft Intune Security Baselines
+    - Group Policy Objects (GPO)
+    - Intune Configuration Profiles
+    - Endpoint Security policies in Microsoft Intune
+    
+    Change Log:
+    v1.0 - Initial release (now deprecated)
 #>
 
 # Define a function to check and set registry keys

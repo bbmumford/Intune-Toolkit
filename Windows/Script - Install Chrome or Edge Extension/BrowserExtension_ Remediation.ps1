@@ -1,8 +1,45 @@
-<# 
-Version: 1.0 
-Author: Brandon Miller-Mumford 
-Script: RemediateBrowserExtension.ps1 
-Description: Install Chrome or Edge Extensions 
+<#
+.SYNOPSIS
+    Installs browser extensions for Chrome or Edge via registry policy
+
+.DESCRIPTION
+    Deploys browser extensions to Google Chrome and/or Microsoft Edge by creating
+    registry keys that force-install the specified extension.
+    
+    Uses the ExtensionInstallForcelist policy to automatically install extensions
+    without requiring user interaction or Chrome Web Store access.
+    
+.NOTES
+    FileName:    BrowserExtension_Remediation.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Google Chrome or Microsoft Edge installed
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Remediation successful (extension installed)
+    - 1: Remediation failed
+    
+    Configuration:
+    - Set $ID to the extension ID from Chrome Web Store
+    - Set $Chrome = $true to install for Chrome
+    - Set $Edge = $true to install for Edge
+    - Set $Force = $true to force installation
+    
+    Registry Method:
+    - Uses ExtensionInstallForcelist policy
+    - HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist
+    - HKLM:\SOFTWARE\Policies\Microsoft\Edge\ExtensionInstallForcelist
+    
+    Change Log:
+    v1.0 - Initial release
 #>
 
 # Set parameters directly in the script

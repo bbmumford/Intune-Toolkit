@@ -1,13 +1,33 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: AutoSync_Detection.ps1
-Description: 
-Version 1.0: Init
-Run as: System
-Context: 64 Bit
-#> 
+.SYNOPSIS
+    Detects if device auto-sync schedule is configured
+
+.DESCRIPTION
+    Checks if the scheduled task for automatic device synchronization with Intune
+    is properly configured and running. Monitors the PushLaunch task to ensure
+    regular sync intervals are maintained.
+    
+.NOTES
+    FileName:    AutoSync_Detection.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System
+    - Context: 64 Bit
+    - Windows 10/11
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (auto-sync configured and running)
+    - 1: Non-Compliant (triggers remediation)
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 
 # Create variable for the time of the last Intune sync.
 $PushInfo = Get-ScheduledTask -TaskName PushLaunch | Get-ScheduledTaskInfo

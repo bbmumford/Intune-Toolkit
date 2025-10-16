@@ -1,12 +1,49 @@
 <#
-Version: 3.2
-Author: 
-- Brandon Miller-Mumford
-Script: Application_Downloader&Installer.ps1
-Description:
-Version 3.2: Optimized download process with Start-BitsTransfer and improved file extension determination.
-Run as: System/User
-Context: 64 Bit
+.SYNOPSIS
+    Template script for downloading and installing applications
+
+.DESCRIPTION
+    Generic PowerShell template for downloading and installing any application
+    from a URL. Supports MSI, EXE, and other installer formats.
+    
+    Optimized download process using Start-BitsTransfer with automatic file
+    extension determination and customizable installer arguments.
+    
+    This is a TEMPLATE - customize for specific applications as needed.
+    
+    Parameters:
+    - $DownloadUrl: URL to download the installer
+    - $InstallerArgs: Command-line arguments for the installer
+    
+.NOTES
+    FileName:    Application_Downloader&Installer.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     3.2
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: System or User (depends on application)
+    - Context: 64 Bit
+    - Internet connection required
+    - Windows 10/11
+    
+    Exit Codes:
+    - 0: Installation successful
+    - 1: Download or installation failed
+    
+    Usage:
+    powershell.exe -File Application_Downloader&Installer.ps1 -DownloadUrl "https://example.com/app.msi" -InstallerArgs "/quiet /norestart"
+    
+    Configuration:
+    - Customize $DownloadUrl for specific application
+    - Customize $InstallerArgs for silent installation
+    - Logs to: %TEMP%\Application_Installer.log
+    
+    Change Log:
+    v3.2 - Optimized download process with Start-BitsTransfer and improved file extension determination
+    v1.0 - Initial release
 #>
 
 param (

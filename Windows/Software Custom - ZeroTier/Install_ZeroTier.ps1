@@ -1,13 +1,49 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: Install_ZeroTier.ps1
-Description: Install & join ZeroTier network.
-Version 1.0: Init
-Run as: System
-Context: 64 Bit
-#> 
+.SYNOPSIS
+    Installs ZeroTier One and joins specified network
+
+.DESCRIPTION
+    Downloads and installs ZeroTier One VPN client, then automatically joins
+    the specified ZeroTier network using API authentication.
+    
+    ZeroTier creates secure, software-defined networks for remote access and
+    site-to-site connectivity.
+    
+    Parameters:
+    - $Token: ZeroTier API token for authentication
+    - $NetworkID: ZeroTier network ID to join
+    - $UI: Optional switch to install ZeroTier UI (default: CLI only)
+    
+.NOTES
+    FileName:    Install_ZeroTier.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Internet connection required
+    - Windows 7/8/10/11
+    
+    Exit Codes:
+    - 0: Installation and network join successful
+    - 1: Installation or network join failed
+    
+    Configuration:
+    - Obtain API Token from ZeroTier Central
+    - Obtain Network ID from ZeroTier Central
+    - Use -UI switch if graphical interface needed
+    
+    External Dependencies:
+    - ZeroTier One MSI installer (downloaded from zerotier.com)
+    - ZeroTier Central API
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 
 param (
   [string]$Token, # Get Zerotier API Token

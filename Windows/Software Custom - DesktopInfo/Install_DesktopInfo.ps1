@@ -1,3 +1,51 @@
+<#
+.SYNOPSIS
+    Installs DesktopInfo system information overlay
+
+.DESCRIPTION
+    Installs DesktopInfo, a desktop wallpaper overlay that displays system
+    information (computer name, IP, CPU, RAM, disk space, etc.).
+    
+    Copies executables and configuration files, creates a VBScript wrapper
+    to hide PowerShell window, and sets up scheduled task for automatic
+    startup at user logon.
+    
+.NOTES
+    FileName:    Install_DesktopInfo.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Windows 10/11
+    
+    Exit Codes:
+    - 0: Installation successful
+    - 1: Installation failed
+    
+    External Dependencies:
+    - DesktopInfo64.exe (must be in same directory)
+    - hostname.ini (configuration file, must be in same directory)
+    - DesktopInfo.ps1 (launcher script, must be in same directory)
+    
+    Configuration:
+    - Installs to: C:\Program Files\DesktopInfo\
+    - Creates scheduled task for user logon
+    - Logs to: C:\ProgramData\Microsoft\IntuneManagementExtension\Logs\
+    
+    Impact:
+    - Overlays system information on desktop wallpaper
+    - Runs at every user logon
+    - Minimal performance impact
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 $PackageName = "DesktopInfo"
 $Description = "DesktopInfo"
 $Prg_path = "$Env:Programfiles\DesktopInfo"

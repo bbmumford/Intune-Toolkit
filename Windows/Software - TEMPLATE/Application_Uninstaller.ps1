@@ -1,3 +1,49 @@
+<#
+.SYNOPSIS
+    Template script for uninstalling applications by name
+
+.DESCRIPTION
+    Generic PowerShell template for uninstalling applications using their
+    display name. Searches the Windows registry for the application's
+    uninstall GUID and executes silent uninstallation.
+    
+    Supports both 32-bit and 64-bit applications on 64-bit Windows.
+    
+    This is a TEMPLATE - customize for specific applications as needed.
+    
+    Parameters:
+    - $AppName: Display name of the application to uninstall
+    
+.NOTES
+    FileName:    Application_Uninstaller.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Windows 10/11
+    
+    Exit Codes:
+    - 0: Uninstallation successful
+    - 1: Application not found
+    - 2: Uninstallation failed
+    
+    Usage:
+    powershell.exe -File Application_Uninstaller.ps1 -AppName "Google Chrome"
+    
+    Configuration:
+    - Customize $AppName to match exact display name in Add/Remove Programs
+    - Script searches both HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall
+      and HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 param(
     [string]$AppName
 )

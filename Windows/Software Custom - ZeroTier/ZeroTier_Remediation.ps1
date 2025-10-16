@@ -1,15 +1,47 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: ZeroTier_Remediation.ps1
-Description: Add device to input network.
-Version 1.0: Init
-Run as: System
-Context: 64 Bit
-Note: run with
+.SYNOPSIS
+    Joins device to specified ZeroTier network
+
+.DESCRIPTION
+    Adds the device to the specified ZeroTier network using the ZeroTier CLI.
+    Assumes ZeroTier One is already installed on the system.
+    
+    Configures network membership to enable VPN connectivity for remote access
+    or site-to-site connections.
+    
+.NOTES
+    FileName:    ZeroTier_Remediation.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Windows 7/8/10/11
+    - ZeroTier One installed
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Remediation successful (joined network)
+    - 1: Remediation failed
+    
+    Configuration:
+    - Replace $networkID with your ZeroTier network ID
+    
+    Usage:
     powershell.exe -ExecutionPolicy Bypass -File "./ZeroTier_Remediation.ps1"
-#> 
+    
+    Prerequisites:
+    - ZeroTier One must be installed
+    - Device must have internet connectivity
+    - Network must be configured in ZeroTier Central
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 
 # Variables
 $networkID = "YOUR_NETWORK_ID"  # Replace with your actual network ID

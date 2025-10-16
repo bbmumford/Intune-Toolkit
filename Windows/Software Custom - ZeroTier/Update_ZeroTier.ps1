@@ -1,15 +1,46 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: Update_ZeroTier.ps1
-Description: Update ZeroTier.
-Version 1.0: Init
-Run as: System
-Context: 64 Bit
-Note: run with
+.SYNOPSIS
+    Updates ZeroTier One to the latest version
+
+.DESCRIPTION
+    Downloads and installs the latest version of ZeroTier One VPN client.
+    Can run in headless mode for silent updates without user interaction.
+    
+    Preserves existing network connections and configuration during update.
+    
+    Parameters:
+    - $Headless: Optional switch for silent/unattended installation
+    
+.NOTES
+    FileName:    Update_ZeroTier.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Internet connection required
+    - Windows 7/8/10/11
+    - ZeroTier One already installed
+    
+    Exit Codes:
+    - 0: Update successful
+    - 1: Update failed
+    
+    Usage:
     powershell.exe -ExecutionPolicy Bypass -File "./Update_ZeroTier.ps1" -Headless
-#> 
+    
+    Impact:
+    - Temporarily disconnects ZeroTier networks during update
+    - Preserves network memberships and configuration
+    - May require brief service restart
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 
 param ([switch]$Headless ) # Run msi in headless mode
 

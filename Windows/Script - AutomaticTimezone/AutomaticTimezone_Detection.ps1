@@ -1,13 +1,39 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: AutomaticTimezone_Detection.ps1
-Description: Sets up Automatic Timezone and Time Sync
-Release notes:
-Version 1.0: Init
-Run as: System
-Context: 64 Bit
+.SYNOPSIS
+    Detects if automatic timezone detection and time synchronization are enabled
+
+.DESCRIPTION
+    Checks if Windows is configured to automatically detect timezone and sync time.
+    
+    Validates two registry settings:
+    1. Location Services consent for timezone detection
+       HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location
+       Value: Allow
+    
+    2. Automatic timezone update service
+       HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate
+       Start: 3 (Manual/Automatic)
+    
+.NOTES
+    FileName:    AutomaticTimezone_Detection.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System
+    - Context: 64 Bit
+    - Windows 10/11
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (automatic timezone enabled)
+    - 1: Non-Compliant (triggers remediation)
+    
+    Change Log:
+    v1.0 - Initial release
 #> 
 
 ##Enter the path to the registry key for example HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System

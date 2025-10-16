@@ -1,8 +1,38 @@
-<# 
-Version: 1.0 
-Author: Brandon Miller-Mumford 
-Script: DetectBrowserExtension.ps1 
-Description: Detect Chrome or Edge Extensions 
+<#
+.SYNOPSIS
+    Detects if browser extension is installed
+
+.DESCRIPTION
+    Checks if a specified Chrome or Edge extension is installed by verifying
+    the registry keys created when extensions are deployed via policy.
+    
+    Supports both Google Chrome and Microsoft Edge (Chromium-based).
+    
+.NOTES
+    FileName:    BrowserExtension_Detection.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System/User
+    - Context: 64 Bit
+    - Google Chrome or Microsoft Edge installed
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (extension installed)
+    - 1: Non-Compliant (triggers extension installation)
+    
+    Configuration:
+    - Set $ID to the extension ID from Chrome Web Store
+    - Set $Chrome = $true for Chrome extensions
+    - Set $Edge = $true for Edge extensions
+    
+    Change Log:
+    v1.0 - Initial release
 #>
 
 # Set parameters directly in the script

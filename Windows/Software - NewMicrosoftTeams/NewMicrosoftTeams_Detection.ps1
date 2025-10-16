@@ -1,3 +1,35 @@
+<#
+.SYNOPSIS
+    Detects if New Microsoft Teams is installed
+
+.DESCRIPTION
+    Checks if the new Microsoft Teams (Teams 2.0) client is installed on
+    the system by scanning the WindowsApps folder for Teams packages.
+    
+    Validates presence of MSTeams_* packages to confirm installation.
+    
+.NOTES
+    FileName:    NewMicrosoftTeams_Detection.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System
+    - Context: 64 Bit
+    - Windows 10 1809+ or Windows 11
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (Teams 2.0 installed)
+    - 1: Non-Compliant (Teams 2.0 not found)
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 # Define the path where New Microsoft Teams is installed
 $teamsPath = "C:\Program Files\WindowsApps"
 

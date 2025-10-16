@@ -1,15 +1,43 @@
-
-
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: InstallBrowserExtension.ps1
-Description: Install Chrome or Edge Extensions
-Version 1.0: Init
-Run as: System
-Context: 64 Bit
-Note: run with
+.SYNOPSIS
+    Standalone script to install browser extensions for Chrome or Edge
+
+.DESCRIPTION
+    Command-line utility to deploy browser extensions to Google Chrome and/or 
+    Microsoft Edge by creating registry policy keys.
+    
+    Can be run standalone or as part of an Intune deployment. Supports both
+    Chrome and Edge browsers with force-install capability.
+    
+.NOTES
+    FileName:    InstallBrowserExtension.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Google Chrome or Microsoft Edge installed
+    
+    Exit Codes:
+    - 0: Installation successful
+    - 1: Installation failed
+    
+    Usage:
+    Run with parameters to specify extension ID and target browser
+    
+    Registry Method:
+    - Uses ExtensionInstallForcelist policy
+    - Force-installs extensions without user interaction
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
+
     powershell.exe -ExecutionPolicy Bypass -File ./InstallBrowserExtension.ps1 -ID 'EXTENSION ID' -Chrome
     
     FLAGS -Chrome -Edge -Force

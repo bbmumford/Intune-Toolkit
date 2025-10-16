@@ -1,15 +1,41 @@
 <#
-Version: 1.0
-Author: 
-- Brandon Miller-Mumford
-Script: ZeroTier_Detection.ps1
-Description: Check if ZeroTier is installed & if device is part of input network.
-Version 1.0: Init
-Run as: System
-Context: 64 Bit
-Note: run with
+.SYNOPSIS
+    Detects if ZeroTier is installed and joined to correct network
+
+.DESCRIPTION
+    Checks if ZeroTier One VPN client is installed and verifies that the
+    device is a member of the specified ZeroTier network.
+    
+    Validates both installation status and network membership to ensure
+    proper VPN connectivity configuration.
+    
+.NOTES
+    FileName:    ZeroTier_Detection.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System
+    - Context: 64 Bit
+    - Windows 7/8/10/11
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (ZeroTier installed and joined to correct network)
+    - 1: Non-Compliant (triggers installation or network join)
+    
+    Configuration:
+    - Set $correctNetworkID to your ZeroTier network ID
+    
+    Usage:
     powershell.exe -ExecutionPolicy Bypass -File "./ZeroTier_Detection.ps1"
-#> 
+    
+    Change Log:
+    v1.0 - Initial release
+#>
 
 # Define the ZeroTier network ID you want to check
 $correctNetworkID = "your_network_id_here"

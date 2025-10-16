@@ -1,3 +1,56 @@
+<#
+.SYNOPSIS
+    Installs or uninstalls Windows Subsystem for Linux (WSL)
+
+.DESCRIPTION
+    Enables or disables Windows Subsystem for Linux (WSL) and optionally
+    installs a default Ubuntu distribution.
+    
+    Supports installation, uninstallation, and can skip distro installation
+    if only WSL feature is needed.
+    
+    Parameters:
+    - $Install: Enable WSL and install Ubuntu
+    - $Uninstall: Disable WSL and remove distributions
+    - $SkipDistroInstall: Enable WSL without installing a distribution
+    
+.NOTES
+    FileName:    WSL.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: Administrator (REQUIRED)
+    - Context: 64 Bit
+    - Windows 10 2004+ or Windows 11
+    - Internet connection (for distro installation)
+    
+    Exit Codes:
+    - 0: Operation successful
+    - 1: Operation failed or invalid parameters
+    
+    Usage:
+    Install WSL with Ubuntu:
+        powershell.exe -File WSL.ps1 -Install
+    
+    Install WSL without distribution:
+        powershell.exe -File WSL.ps1 -Install -SkipDistroInstall
+    
+    Uninstall WSL:
+        powershell.exe -File WSL.ps1 -Uninstall
+    
+    Impact:
+    - Requires system restart to complete
+    - Downloads Ubuntu distribution (~500MB) if not skipped
+    - Enables virtualization features
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 param(
     [switch]$Install,
     [switch]$Uninstall,

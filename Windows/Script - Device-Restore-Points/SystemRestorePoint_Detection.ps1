@@ -1,3 +1,41 @@
+<#
+.SYNOPSIS
+    Detects if system restore points are properly configured
+
+.DESCRIPTION
+    Checks if Windows System Restore is enabled and configured correctly:
+    - Verifies System Protection is enabled on C: drive
+    - Checks if restore points exist within the last 30 days
+    - Validates maximum disk usage is set correctly (10 GB)
+    - Ensures restore points aren't older than 60 days
+    
+.NOTES
+    FileName:    SystemRestorePoint_Detection.ps1
+    Author:      
+    Created:     
+    Modified:    2025-10-16
+    Version:     1.0
+    
+    Requirements:
+    - PowerShell 2.0+
+    - Run as: System (Administrator privileges required)
+    - Context: 64 Bit
+    - Windows 7/8/10/11
+    - Intune Proactive Remediation Framework
+    
+    Exit Codes:
+    - 0: Compliant (restore points properly configured)
+    - 1: Non-Compliant (triggers remediation)
+    
+    Checks:
+    - System Protection enabled
+    - Recent restore point exists (< 30 days old)
+    - Maximum disk usage configured (10 GB)
+    
+    Change Log:
+    v1.0 - Initial release
+#>
+
 # Variables
 $thirtyDaysAgo = (Get-Date).AddDays(-30)
 $sixtyDaysAgo = (Get-Date).AddDays(-60)

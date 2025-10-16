@@ -1,11 +1,45 @@
 ﻿<#
-Version: 2.1
-Author: 
-- Brandon Miller-Mumford
-Script: LoadingScreen.ps1
-Description: Updated to use registry key for installation detection
-Run as: User
-Context: 64 Bit
+.SYNOPSIS
+    Displays full-screen loading screen during device setup
+
+.DESCRIPTION
+    Shows a customizable full-screen XAML-based loading screen with company
+    logo and progress indicators during device provisioning or enrollment.
+    
+    Provides visual feedback to users during Autopilot, Intune enrollment,
+    or other lengthy setup processes. Screen automatically closes when
+    setup is complete.
+    
+.NOTES
+    FileName:    LoadingScreen.ps1
+    Author:      Brandon Miller-Mumford
+    Created:     
+    Modified:    2025-10-16
+    Version:     2.1
+    
+    Requirements:
+    - PowerShell 5.0+
+    - Run as: User
+    - Context: 64 Bit
+    - Windows 10/11
+    - .NET Framework (PresentationFramework)
+    
+    Exit Codes:
+    - 0: Screen displayed and closed successfully
+    
+    Configuration:
+    - Customize XAML for branding (logo, colors, text)
+    - Registry key controls screen dismissal
+    - HKCU:\Software\YourCompany\LoadingScreen
+    
+    Impact:
+    - Takes over full screen during setup
+    - Prevents user interaction until dismissed
+    - Used during Autopilot/Intune enrollment
+    
+    Change Log:
+    v2.1 - Updated to use registry key for installation detection
+    v1.0 - Initial release
 #>
 
 Add-Type -AssemblyName PresentationFramework
