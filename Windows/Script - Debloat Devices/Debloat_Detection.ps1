@@ -28,14 +28,14 @@
     - 1: Non-Compliant (debloat not completed)
     
     Registry Path:
-    - HKLM:\Software\IntuneDependencies\RaphireDebloatCompleted
+    - HKLM:\Software\Intune\RaphireDebloatCompleted
     
     Change Log:
     v1.0 - Initial release
 #>
 
 # Detection script to check if the DWORD registry value exists and is set to $true
-$regPath = "HKLM:\Software\IntuneDependencies"
+$regPath = "HKLM:\Software\Intune"
 $regName = "RaphireDebloatCompleted"
 
 if ((Get-ItemProperty -Path $regPath -Name $regName -ErrorAction SilentlyContinue).$regName -eq $true) {

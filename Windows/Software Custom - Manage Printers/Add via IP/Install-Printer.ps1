@@ -98,7 +98,8 @@ function Write-LogEntry {
     )
 
     #Build Log File appending System Date/Time to output
-    $LogFile = Join-Path -Path $env:SystemRoot -ChildPath $("Temp\$FileName")
+    # Storing logs in IntuneManagementExtension\Logs allows Intune "Collect Diagnostics" to automatically retrieve them
+    $LogFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\$FileName"
     $Time = -join @((Get-Date -Format "HH:mm:ss.fff"), " ", (Get-WmiObject -Class Win32_TimeZone | Select-Object -ExpandProperty Bias))
     $Date = (Get-Date -Format "MM-dd-yyyy")
 

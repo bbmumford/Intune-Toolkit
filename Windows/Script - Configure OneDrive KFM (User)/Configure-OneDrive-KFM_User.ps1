@@ -97,7 +97,7 @@ $waitIntervalSeconds = 15      # Seconds between attempts
 # LOGGING SETUP
 # ============================================================================
 
-$userLogFolder = Join-Path $Env:LOCALAPPDATA 'Lieben.nu\Logs'
+$userLogFolder = Join-Path $Env:LOCALAPPDATA 'Intune\Logs'
 if (-not (Test-Path $userLogFolder)) {
     New-Item -Path $userLogFolder -ItemType Directory -Force | Out-Null
 }

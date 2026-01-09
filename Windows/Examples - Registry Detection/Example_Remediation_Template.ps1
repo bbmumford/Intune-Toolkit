@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     Executes script logic and marks completion in the standardized 
-    IntuneDependencies registry location.
+    Intune registry location.
     
     This template follows the standardized registry detection method.
 
@@ -26,8 +26,8 @@
     - 1: Remediation failed
     
     Registry Path:
-    - System Context: HKLM:\Software\IntuneDependencies
-    - User Context:   HKCU:\Software\IntuneDependencies
+    - System Context: HKLM:\Software\Intune
+    - User Context:   HKCU:\Software\Intune
     
     Change Log:
     v1.0 - Initial template
@@ -93,7 +93,7 @@ catch {
 try {
     # Determine registry path based on context
     $RegRoot = if ($SystemContext) { "HKLM:" } else { "HKCU:" }
-    $RegPath = "$RegRoot\Software\IntuneDependencies"
+    $RegPath = "$RegRoot\Software\Intune"
     
     # Create registry path if it doesn't exist
     if (-not (Test-Path $RegPath)) {

@@ -1,6 +1,6 @@
 # Deploying Intune Dependencies in Microsoft Intune as a Win32 App
 
-This guide will walk you through the process of deploying Intune Dependecies in Microsoft Intune as a Win32 app. This script copies required files to `C:\IntuneDependencies` and updates a registry key for detection. Additionally, the `DeleteFiles.cmd` script removes the dependencies and cleans up the registry key.
+This guide will walk you through the process of deploying Intune Dependecies in Microsoft Intune as a Win32 app. This script copies required files to `C:\ProgramData\Intune` and updates a registry key for detection. Additionally, the `DeleteFiles.cmd` script removes the dependencies and cleans up the registry key.
 
 ---
 
@@ -33,7 +33,7 @@ This guide will walk you through the process of deploying Intune Dependecies in 
 
 ### Step 3: Configure the App Information for `CopyFiles.cmd`
 1. **Name**: `Copy Files Configuration`
-2. **Description**: `Copies required files to C:\IntuneDependencies and sets a registry key for detection.`
+2. **Description**: `Copies required files to C:\ProgramData\Intune and sets a registry key for detection.`
 3. Fill in any other required fields and click **Next**.
 
 ---

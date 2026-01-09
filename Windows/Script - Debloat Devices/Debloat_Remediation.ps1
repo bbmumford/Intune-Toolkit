@@ -56,5 +56,5 @@
 & ([scriptblock]::Create((irm "https://raw.githubusercontent.com/andrew-s-taylor/public/refs/heads/main/De-Bloat/RemoveBloat.ps1")))
 
 # Create the registry key and set a DWORD value to indicate completion
-New-Item -Path "HKLM:\Software\IntuneDependencies" -Force | Out-Null
-Set-ItemProperty -Path "HKLM:\Software\IntuneDependencies" -Name "RaphireDebloatCompleted" -Value $true -Force
+New-Item -Path "HKLM:\Software\Intune" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\Software\Intune" -Name "RaphireDebloatCompleted" -Value $true -Force

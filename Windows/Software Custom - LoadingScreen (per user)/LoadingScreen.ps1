@@ -30,7 +30,7 @@
     Configuration:
     - Customize XAML for branding (logo, colors, text)
     - Registry key controls screen dismissal
-    - HKCU:\Software\YourCompany\LoadingScreen
+    - HKCU:\Software\Intune\LoadingScreen
     
     Impact:
     - Takes over full screen during setup
@@ -102,7 +102,7 @@ $Window.add_KeyDown({
 # Schedule a restart after 1 hour and 30 minutes
 $script = {
     # Define the registry key and value
-    $regPath = "HKCU:\Software\IntuneDependencies"
+    $regPath = "HKCU:\Software\Intune"
     $regName = "DeviceConfigurationComplete"
 
     # Check if registry path exists and create if not

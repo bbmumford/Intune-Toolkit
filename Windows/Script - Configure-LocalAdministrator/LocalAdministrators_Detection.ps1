@@ -40,41 +40,55 @@
 # Define the expected administrator account name
 $ExpectedAdminName = "Company.LocalAdmin"
 
+function Get-LocalAccounts {
+    # Prefer CIM when available, fall back to WMI for PowerShell 2.0/older hosts
+    if (Get-Command -Name Get-CimInstance -ErrorAction SilentlyContinue) {
+        try {
+            return Get-CimInstance -ClassName Win32_UserAccount -Filter "LocalAccount=True" -ErrorAction Stop
+        }
+        catch {}
+    }
+
+    return Get-WmiObject -Class Win32_UserAccount -Filter "LocalAccount=True" -ErrorAction Stop
+}
+
+function Get-AdministratorsMembers {
+    # ADSI is the most reliable way to inspect the local Administrators group
+    try {
+        $admins = [ADSI]"WinNT://./Administrators,group"
+        return @($admins.Invoke("Members")) | ForEach-Object {
+            $_.GetType().InvokeMember("Name", 'GetProperty', $null, $_, $null)
+        }
+    }
+    catch {
+        return @()
+    }
+}
+
 try {
-    # Use WMI for compatibility with older Windows versions
-    $AllAccounts = Get-CimInstance -ClassName Win32_UserAccount -Filter "LocalAccount=True" -ErrorAction Stop
-    
+    $AllAccounts = Get-LocalAccounts
+
     # Find the default Administrator account (SID ending in -500)
     $AdminAccount = $AllAccounts | Where-Object { $_.SID -like "S-1-5-*-500" }
-    
+
     # Find the expected admin account (in case it already exists as separate account)
     $ExpectedAccount = $AllAccounts | Where-Object { $_.Name -eq $ExpectedAdminName }
-    
+
     # Check if default Administrator account exists
     if (-not $AdminAccount) {
         Write-Output "Non-Compliant: Default Administrator account (SID *-500) not found."
         exit 1
     }
-    
+
     # Check if the default admin is properly renamed and enabled
     if ($AdminAccount.Name -eq $ExpectedAdminName -and -not $AdminAccount.Disabled) {
-        # Check if it's in the Administrators group
-        $AdminsGroup = Get-CimInstance -ClassName Win32_Group -Filter "LocalAccount=True AND SID='S-1-5-32-544'" -ErrorAction Stop
-        $GroupMembers = Get-CimInstance -ClassName Win32_GroupUser -ErrorAction Stop | 
-            Where-Object { $_.GroupComponent -match $AdminsGroup.SID }
-        
-        $IsMember = $false
-        foreach ($Member in $GroupMembers) {
-            if ($Member.PartComponent -match $AdminAccount.SID) {
-                $IsMember = $true
-                break
-            }
-        }
-        
-        if ($IsMember) {
+        $AdminMembers = Get-AdministratorsMembers
+
+        if ($AdminMembers -contains $ExpectedAdminName) {
             Write-Output "Compliant: Administrator account '$ExpectedAdminName' is properly configured and is an administrator."
             exit 0
-        } else {
+        }
+        else {
             Write-Output "Non-Compliant: Account '$ExpectedAdminName' exists but is not in Administrators group."
             exit 1
         }

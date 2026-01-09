@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     Detects if a script has been successfully executed by checking for a
-    registry marker in the standardized IntuneDependencies location.
+    registry marker in the standardized Intune location.
     
     This template follows the standardized registry detection method.
 
@@ -26,8 +26,8 @@
     - 1: Non-Compliant (script needs to run)
     
     Registry Path:
-    - System Context: HKLM:\Software\IntuneDependencies
-    - User Context:   HKCU:\Software\IntuneDependencies
+    - System Context: HKLM:\Software\Intune
+    - User Context:   HKCU:\Software\Intune
     
     Change Log:
     v1.0 - Initial template
@@ -57,7 +57,7 @@ $RequiredVersion = $null  # Example: "1.0" or leave as $null
 try {
     # Determine registry path based on context
     $RegRoot = if ($SystemContext) { "HKLM:" } else { "HKCU:" }
-    $RegPath = "$RegRoot\Software\IntuneDependencies"
+    $RegPath = "$RegRoot\Software\Intune"
     $RegName = "$($ScriptName)Completed"
     
     # Check if registry path exists
